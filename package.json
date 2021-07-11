@@ -1,0 +1,15 @@
+{
+  "name": "yeowha",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "comcigan-parser": "^1.0.0",
+    "nodemon": "^2.0.12"
+  }
+}
