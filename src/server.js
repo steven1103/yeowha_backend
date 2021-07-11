@@ -8,14 +8,23 @@ const getTime = async (grade, classNum, day, period) => {
   await timetable.setSchool(school[0].code);
 
   const result = await timetable.getTimetable();
-  const FinalResult = result[grade][classNum][day - 1][period - 1].subject;
-  console.log(FinalResult)
-  return FinalResult
+  const classObj = result[grade][classNum][day - 1][period - 1].class;
+  const gradeObj = result[grade][classNum][day - 1][period - 1].grade;
+  const subjectObj = result[grade][classNum][day - 1][period - 1].subject;
+  const FinalResult = { subject: subjectObj, grade:gradeObj, class:classObj };
+  console.log(FinalResult);
+  return FinalResult;
 };
 
 const typeDefs = `
+
+  type periodObject {
+      subject:String!
+      grade:Int!
+      class:Int!
+  }
   type Query {
-    getPeriodSubject(grade: Int!, classNum: Int!, day:Int!, period: Int!): String!
+    getPeriodSubject(grade: Int!, classNum: Int!, day:Int!, period: Int!): periodObject!
   }
 `;
 
