@@ -11,7 +11,8 @@ const getTime = async (grade, classNum, day, period) => {
   const classObj = result[grade][classNum][day - 1][period - 1].class;
   const gradeObj = result[grade][classNum][day - 1][period - 1].grade;
   const subjectObj = result[grade][classNum][day - 1][period - 1].subject;
-  const FinalResult = { subject: subjectObj, grade:gradeObj, class:classObj };
+  const teacherObj = result[grade][classNum][day - 1][period - 1].teacher;
+  const FinalResult = { subject: subjectObj, grade:gradeObj, class:classObj, teacher: teacherObj };
   console.log(FinalResult);
   return FinalResult;
 };
@@ -22,6 +23,7 @@ const typeDefs = `
       subject:String!
       grade:Int!
       class:Int!
+      teacher: String!
   }
   type Query {
     getPeriodSubject(grade: Int!, classNum: Int!, day:Int!, period: Int!): periodObject!
